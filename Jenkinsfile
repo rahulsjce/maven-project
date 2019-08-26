@@ -7,13 +7,7 @@ pipeline {
                 echo 'Building..'
                 bat 'mvn clean package'
             }
-	  post{
-	        success{
-		        echo 'Now Archiving...'
-		        arhiveArtifacts artifacts: '**/target/*.war'
-	        }
-         }
-        }
+	}
         stage('Test') {
             steps {
                 echo 'Testing..'
