@@ -3,11 +3,12 @@ pipeline {
 
     stages {
         stage ('Compile Stage') {
-            script{
-			env.JAVA_HOME="${tool 'localJDK'}"
-			} 
+           
             steps {
                 withMaven(maven : 'localMaven') {
+			 script{
+			env.JAVA_HOME="${tool 'localJDK'}"
+			} 
                     bat 'mvn clean compile'
                 }
             }
