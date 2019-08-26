@@ -6,9 +6,9 @@ pipeline {
            
             steps {
                 withMaven(maven : 'localMaven') {
-			 script{
+		    script{
 			env.JAVA_HOME="${tool 'localJDK'}"
-			} 
+		    } 
                     bat 'mvn clean compile'
                 }
             }
@@ -27,6 +27,9 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'localMaven') {
+		    script{
+			env.JAVA_HOME="${tool 'localJDK'}"
+		    } 
                     bat 'mvn deploy'
                 }
             }
