@@ -7,8 +7,8 @@ pipeline {
                 echo 'Building..'
 		bat "mvn --version"
                 bat "java -version"
-		bat 'mvn clean'
-                //bat 'mvn clean package'
+		//bat 'mvn clean'
+                bat 'mvn clean package'
             }
 	}
         stage('Test') {
