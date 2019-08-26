@@ -3,11 +3,11 @@ pipeline {
 	/*tools{
 	    jdk 'localJDK'
 	}*/
-    script{
-	env.JAVA_HOME="${tool 'localJDK'}"
-	//env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-    }
     stages {
+	script{
+		env.JAVA_HOME="${tool 'localJDK'}"
+		//env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+    	}    
         stage('Build') {
             steps {
                 echo 'Building..'
