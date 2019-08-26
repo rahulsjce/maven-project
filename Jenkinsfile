@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	tools{
-	    localJDK 'jdk-8.0.202.08'
+	    jdk 'localJDK'
 	}
     stages {
         stage('Build') {
