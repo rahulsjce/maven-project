@@ -1,8 +1,8 @@
 pipeline {
     agent any
-	tools{
+	/*tools{
 	    jdk 'localJDK'
-	}
+	}*/
     stages {
         stage('Build') {
             steps {
