@@ -13,7 +13,7 @@ pipeline {
 		//java='C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin\java'
 		    script{
 		    env.JAVA_HOME="${tool 'localJDK'}"
-		    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+		    //env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 		    }
                 bat 'mvn clean package'
             }
