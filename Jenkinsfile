@@ -14,12 +14,13 @@ pipeline {
 			env.JAVA_HOME="${tool 'localJDK'}"
 			//env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
     		}    
-                bat 'mvn clean package'
+                bat 'mvn clean install'
             }
 	}
         stage('Test') {
             steps {
                 echo 'Testing..'
+		mvn 'test'
             }
         }
         stage('Deploy') {
