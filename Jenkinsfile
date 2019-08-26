@@ -1,30 +1,31 @@
 pipeline {
     agent any
-	/*tools{
-	    jdk 'localJDK'
-	}*/
+
     stages {
-	stage('Build') {
+        stage ('Compile Stage') {
+
             steps {
-                echo 'Building..'
-		bat "mvn --version"
-                bat "java -version"
-		//bat 'mvn clean'
-		script{
-			env.JAVA_HOME="${tool 'localJDK'}"
-			//env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-    		}    
-                bat 'mvn clean package'
-            }
-	}
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+                withMaven(maven : 'localMaven') {
+                    sh 'mvn clean compile'
+                }
             }
         }
-        stage('Deploy') {
+
+        stage ('Testing Stage') {
+
             steps {
-                echo 'Deploying....'
+                withMaven(maven : 'localMaven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'localMaven') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
