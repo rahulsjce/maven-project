@@ -8,7 +8,9 @@ pipeline {
 		bat "mvn --version"
                 bat "java -version"
 		//bat 'mvn clean'
-		java='C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin\java'
+		//java='C:\Program Files\AdoptOpenJDK\jdk-8.0.202.08\bin\java'
+		    env.JAVA_HOME="${tool 'jdk-8.0.202.08'}"
+		    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                 bat 'mvn clean package'
             }
 	}
