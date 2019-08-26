@@ -3,17 +3,17 @@ pipeline {
 	/*tools{
 	    jdk 'localJDK'
 	}*/
+    script{
+	env.JAVA_HOME="${tool 'localJDK'}"
+	//env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
 		bat "mvn --version"
                 bat "java -version"
-		//bat 'mvn clean'
-		   //script{
-		    env.JAVA_HOME="${tool 'localJDK'}"
-		    //env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-		    //}
+		//bat 'mvn clean'		   
                 bat 'mvn clean package'
             }
 	}
